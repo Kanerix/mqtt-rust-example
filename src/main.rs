@@ -28,7 +28,7 @@ fn main() {
         .publish(mqtt::Message::new("mqtt_test_m5", message, 0))
         .unwrap();
     
-    println!("\nAfventer svar...");
+    println!("\nAwaiting message...");
 
     let rx = client.start_consuming();
 
@@ -37,7 +37,7 @@ fn main() {
             println!("{}", message.payload_str());
         }
         None => {
-            println!("Modtog ingen besked");
+            println!("No message received");
         }
     });
 
