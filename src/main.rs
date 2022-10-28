@@ -18,7 +18,7 @@ fn main() {
 
     client.subscribe("mqtt_test_pc", 0).unwrap();
 
-    stdout().write(b"Send besked: ").unwrap();
+    stdout().write(b"Send message: ").unwrap();
     stdout().flush().unwrap();
 
     let mut message = String::new();
@@ -34,7 +34,7 @@ fn main() {
 
     let reader = thread::spawn(move || match rx.recv().unwrap() {
         Some(message) => {
-            println!("{}", message.payload_str());
+            println!("Incoming: \"{}\"", message.payload_str());
         }
         None => {
             println!("No message received");
